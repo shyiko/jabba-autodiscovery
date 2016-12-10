@@ -15,8 +15,9 @@ if [ "$(cmp index.json updated.index.json >/dev/null 2>&1; echo $?)" != "0" ]; t
   CHECKOUT_DIR=$(mktemp -d /tmp/jabba-autodiscovery.XXXXXX)
   git clone --single-branch --branch=master https://$GITHUB_TOKEN@github.com/shyiko/jabba $CHECKOUT_DIR
   cp updated.index.json $CHECKOUT_DIR/index.json
-  BRANCH_NAME="autodiscovery/$(date +%Y-%m-%d)"
-  COMMIT_MESSAGE=$BRANCH_NAME
+  TIMESTAMP="$(date +%Y-%m-%d)"
+  BRANCH_NAME="autodiscovery/$TIMESTAMP"
+  COMMIT_MESSAGE="$TIMESTAMP auto discovery"
   (
     cd $CHECKOUT_DIR &&
     git branch $BRANCH_NAME &&
