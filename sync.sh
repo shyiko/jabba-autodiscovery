@@ -21,7 +21,7 @@ if [ "$(cmp index.json updated.index.json >/dev/null 2>&1; echo $?)" != "0" ]; t
   (
     cd $CHECKOUT_DIR &&
     git branch $BRANCH_NAME &&
-    git co $BRANCH_NAME &&
+    git checkout $BRANCH_NAME &&
     git commit -m "$COMMIT_MESSAGE" index.json &&
     git push origin/$BRANCH_NAME
   )
