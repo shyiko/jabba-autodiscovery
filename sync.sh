@@ -22,6 +22,7 @@ if [ "$(cmp index.json updated.index.json >/dev/null 2>&1; echo $?)" != "0" ]; t
     cd $CHECKOUT_DIR &&
     git config user.email "stanley.shyiko@gmail.com" &&
     git config user.name "shyiko/jabba-autodiscovery" &&
+    git config push.default simple &&
     git branch $BRANCH_NAME &&
     git checkout $BRANCH_NAME &&
     git commit -m "$COMMIT_MESSAGE" index.json &&
