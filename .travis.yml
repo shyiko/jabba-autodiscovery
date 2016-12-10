@@ -1,5 +1,8 @@
 language: node_js
 node_js:
-  - "6"
+- '6'
 script:
-  - ./sync.sh
+- "./sync.sh"
+env:
+  global:
+    secure: kQ6uXMbiGjVP3boTE94JVylWGq5upE5vGwVLR8j+XrTJG+Ec4pe6+agPUFS8IL3yP85OIxwu9nsKMOkrys4mSs6LBzndB6H+F45Wi3WyP087b4ZL4INiKdyeNLVrEDSNsvYvj2z4lYgriDbqjGpriFq1je42sKUfsiaR/DgTFdcXx6+nlqLk2P1/a+9cyjs0TKyhnIg5xem/DaBuNWaKxQE9ALkpjZSee7EEbfPrfBklfXC4xNIfpQ69FZLL4YQ8vltNVn93qUJsiwi2PmLOX/grYSzd1fdLtMgTgXP3Xxig8pYGXQA9go5jr3Ptdvc4UvNwbgarsxiXmKT1trvubKDuXQGONGD4MEfnHB8B+zHwj+EfQBffI9A1bsoHySje17wcoDU5IIx4gCDOJOsFDwfG6iSEJln4Ahi6vrv55hce/pJEN2mQQdLxT50xQZaZ9rt6LXepzKbuyA4EevT58BYcOybECMkq7AUbGGC2zr62O94vegonkJOl6VKEWnp4lqlwfNokNlb1RXsQo50QnWhHpgYgZhBW+NnQcB+MRx7hiEF0EqMxxysS8RloYof0FlbriG+BMriBR1i+tHoF3qXLGhMj6wMiKY+qFug5EdsW7G98l/CASpvLOJCJ4ICvhP6GAcQQV7Ac5w4Zixn6VZ/545nrxwAHE786TzSr1p4=
