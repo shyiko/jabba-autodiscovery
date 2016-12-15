@@ -6,7 +6,7 @@ process.on('unhandledRejection', (reason, promise) => {
   process.exit(1)
 })
 
-const minBuildNumber = 100
+const minBuildNumber = 140
 const baseURL = 'http://download.java.net/java/jdk9/archive'
 
 fetch('https://jdk9.java.net/download/')
