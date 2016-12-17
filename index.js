@@ -14,13 +14,19 @@ const stdin = process.stdin
 stdin.resume()
 stdin.setEncoding('utf8')
 stdin.pipe(concat((data) => {
-  next(JSON.parse(data)).then((updatedData) => {
-    console.log(stringify(updatedData, {
-      cmp: (l, r) => semver.valid(l.key) && semver.valid(r.key)
-        ? semver.compare(r.key, l.key) : l.key.localeCompare(r.key),
-      space: 2
-    }))
-  })
+  next(JSON.parse(data)).then(
+    (updatedData) => {
+      console.log(stringify(updatedData, {
+        cmp: (l, r) => semver.valid(l.key) && semver.valid(r.key)
+          ? semver.compare(r.key, l.key) : l.key.localeCompare(r.key),
+        space: 2
+      }))
+    }, 
+    (err) => {
+      console.error(err.stack)
+      process.exit(1)
+    }
+  )
 }))
 
 function next(data) {
