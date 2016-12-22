@@ -6,6 +6,9 @@ if (!url) {
   phantom.exit(1)
 }
 
+// suppress error output
+page.onError = function(msg, trace) {}
+
 page.open(url, function (status) {
   if (status === 'success') {
     const ee = page.evaluate(function() {
