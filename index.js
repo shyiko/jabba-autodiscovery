@@ -34,7 +34,7 @@ function next(data) {
     node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html')
       .then((data) => ({ns: 'jdk', data})),
     node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html')
-      .then((data) => ({ns: 'sjre', data})),
+      .then((data) => ({ns: 'jdk@sjre', data})),
     node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html')
       .then((data) => ({ns: 'jdk', data})),
     node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html')

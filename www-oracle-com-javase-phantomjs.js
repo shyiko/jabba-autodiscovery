@@ -32,7 +32,7 @@ page.open(url, function (status) {
                   path.match(/sjre-(\d(u\d+)?)-/)
                 )[1].split('u')
                 if (/^sjre-[^-]+-oth/.test(k)) {
-                  o.ns = 'sjre'
+                  o.ns = 'jdk@sjre'
                 }
                 o.version = '1.' + version[0] + '.' + (version[1] || 0)
                 o.url = path.replace('/otn/', '/otn-pub/')
