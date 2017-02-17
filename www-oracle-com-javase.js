@@ -7,7 +7,7 @@ childProcess.execFile(phantomjs.path, [
   process.argv[2]
 ], function(err, stdout, stderr) {
   if (err) {
-    console.error(err.stack)
+    console.error(stdout)
     process.exit(1)
   }
   console.log(stdout)
