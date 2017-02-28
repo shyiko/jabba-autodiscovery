@@ -6,7 +6,7 @@ process.on('unhandledRejection', (reason, promise) => {
   process.exit(1)
 })
 
-const minBuildNumber = 140
+const minBuildNumber = 155
 const baseURL = 'http://download.java.net/java/jdk9/archive'
 
 fetch('https://jdk9.java.net/download/')
@@ -19,7 +19,7 @@ fetch('https://jdk9.java.net/download/')
     const $ = cheerio.load(html)
     const ee = []
     function resolve(v) {
-      fetch(`http://www.java.net/download/java/jdk9/archive/${v}/binaries/jre-9-ea+${v}_windows-x86_bin.md5`,
+      fetch(`http://www.java.net/download/java/jdk9/archive/${v}/binaries/jre-9-ea+${v}_windows-x86_bin.sha256`,
           {method: 'HEAD'})
         .then((res) => {
           if (res.ok) {
