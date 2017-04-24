@@ -6,10 +6,10 @@ process.on('unhandledRejection', (reason, promise) => {
   process.exit(1)
 })
 
-const minBuildNumber = 155
+const minBuildNumber = 165
 const baseURL = 'http://download.java.net/java/jdk9/archive'
 
-fetch('https://jdk9.java.net/download/')
+fetch('http://jdk.java.net/9/')
   .then((res) => {
     if (!res.ok) { throw new Error('' + res.status) }
     return res
@@ -37,6 +37,6 @@ fetch('https://jdk9.java.net/download/')
           process.nextTick(resolve, v - 1)
         })
     }
-    resolve(parseInt($('a.s').first().attr('href').match(/archive\/(\d+)\/binaries/)[1], 10))
+    resolve(parseInt($('a[href^="http://download.java.net/java/jdk9/archive"]').first().attr('href').match(/archive\/(\d+)\/binaries/)[1], 10))
   })
 
