@@ -24,6 +24,8 @@ page.open(url, function (status) {
                 ~path.indexOf('linux-i586') && !path.match(/.rpm$/) ? {os: 'linux', arch: '386'} : // jdk-8u111-linux-i586.tar.gz
                 ~path.indexOf('linux-x64') && !path.match(/.rpm$/) ? {os: 'linux', arch: 'amd64'} : // jdk-8u111-linux-x64.tar.gz
                 ~path.indexOf('windows-x64') ? {os: 'windows', arch: 'amd64'} : // jdk-8u111-windows-x64.exe
+                ~path.indexOf('linux-arm32-vfp-hflt') ? {os: 'linux', arch: 'arm'} :
+                ~path.indexOf('linux-arm64-vfp-hflt') ? {os: 'linux', arch: 'arm64'} :
                 null
               if (o) {
                 const version = (
