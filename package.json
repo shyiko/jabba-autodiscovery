@@ -14,10 +14,10 @@
     "json-stable-stringify": "^1.0.1",
     "node-fetch": "^1.6.3",
     "phantomjs-prebuilt": "^2.1.14",
-    "semver": "^5.3.0"
+    "semver": "^5.4.1"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=6.6.0"
   },
   "private": false
 }
