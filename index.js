@@ -52,8 +52,12 @@ function next(data) {
     })
   })
   return Promise.all([
+    node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html')
+      .then((data) => ({ns: 'jdk', data})),
     node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html')
       .then((data) => ({ns: 'jdk', data})),
+    node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/server-jre9-downloads-3848530.html')
+      .then((data) => ({ns: 'jdk@sjre', data})),
     node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html')
       .then((data) => ({ns: 'jdk@sjre', data})),
 /*
@@ -64,7 +68,7 @@ function next(data) {
     node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html')
       .then((data) => ({ns: 'jdk', data})),
 */
-    node('jdk9-java-net.js').then((data) => ({ns: 'jdk', data})),
+    //node('jdk9-java-net.js').then((data) => ({ns: 'jdk', data})),
     node('zulu-org.js').then((data) => ({ns: 'jdk@zulu', data})),
     node('zulu-org-eap.js').then((data) => ({ns: 'jdk@zulu', data})),
     node('developer-ibm-com-javasdk.js true').then((data) => ({ns: 'jdk@ibm', data})),

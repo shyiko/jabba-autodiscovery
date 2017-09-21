@@ -20,7 +20,7 @@ page.open(url, function (status) {
             Object.keys(ff).forEach(function (kk) {
               const path = ff[kk].filepath
               const o =
-                ~path.indexOf('macosx-x64') ? {os: 'darwin', arch: 'amd64'} : // jdk-8u111-macosx-x64.dmg
+                ~path.indexOf('osx-x64') ? {os: 'darwin', arch: 'amd64'} : // jdk-8u111-macosx-x64.dmg
                 ~path.indexOf('linux-i586') && !path.match(/.rpm$/) ? {os: 'linux', arch: '386'} : // jdk-8u111-linux-i586.tar.gz
                 ~path.indexOf('linux-x64') && !path.match(/.rpm$/) ? {os: 'linux', arch: 'amd64'} : // jdk-8u111-linux-x64.tar.gz
                 ~path.indexOf('windows-x64') ? {os: 'windows', arch: 'amd64'} : // jdk-8u111-windows-x64.exe
@@ -29,8 +29,9 @@ page.open(url, function (status) {
                 null
               if (o) {
                 const version = (
-                  path.match(/jdk-(\d(u\d+)?)-/) ||
+                  path.match(/jdk-(\d(u\d+)?)[_-]/) ||
                   path.match(/server-jre-(\d(u\d+)?)-/) ||
+                  path.match(/serverjre-(\d(u\d+)?)_/) ||
                   path.match(/sjre-(\d(u\d+)?)-/)
                 )[1].split('u')
                 if (/^sjre-[^-]+-oth/.test(k)) {
