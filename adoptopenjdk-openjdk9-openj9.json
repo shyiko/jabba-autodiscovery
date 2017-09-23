@@ -1,0 +1,27 @@
+{
+  "release_name": "jdk-9+181",
+  "timestamp": "2017-09-16T09:42:11Z",
+  "binaries": [
+    {
+      "platform": "Linux ppc64le",
+      "binary_name": "OpenJDK9-OPENJ9_ppc64le_Linux_jdk-9.181.tar.gz",
+      "binary_link": "https://github.com/AdoptOpenJDK/openjdk9-openj9-releases/releases/download/jdk-9%2B181/OpenJDK9-OPENJ9_ppc64le_Linux_jdk-9.181.tar.gz",
+      "binary_size": "181 MB",
+      "checksum_link": "https://github.com/AdoptOpenJDK/openjdk9-openj9-releases/releases/download/jdk-9%2B181/OpenJDK9-OPENJ9_ppc64le_Linux_jdk-9.181.sha256.txt"
+    },
+    {
+      "platform": "Linux s390x",
+      "binary_name": "OpenJDK9-OPENJ9_s390x_Linux_jdk-9.181.tar.gz",
+      "binary_link": "https://github.com/AdoptOpenJDK/openjdk9-openj9-releases/releases/download/jdk-9%2B181/OpenJDK9-OPENJ9_s390x_Linux_jdk-9.181.tar.gz",
+      "binary_size": "182 MB",
+      "checksum_link": "https://github.com/AdoptOpenJDK/openjdk9-openj9-releases/releases/download/jdk-9%2B181/OpenJDK9-OPENJ9_s390x_Linux_jdk-9.181.sha256.txt"
+    },
+    {
+      "platform": "Linux x64",
+      "binary_name": "OpenJDK9-OPENJ9_x64_Linux_jdk-9.181.tar.gz",
+      "binary_link": "https://github.com/AdoptOpenJDK/openjdk9-openj9-releases/releases/download/jdk-9%2B181/OpenJDK9-OPENJ9_x64_Linux_jdk-9.181.tar.gz",
+      "binary_size": "181 MB",
+      "checksum_link": "https://github.com/AdoptOpenJDK/openjdk9-openj9-releases/releases/download/jdk-9%2B181/OpenJDK9-OPENJ9_x64_Linux_jdk-9.181.sha256.txt"
+    }
+  ]
+}

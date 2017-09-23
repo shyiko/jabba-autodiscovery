@@ -34,19 +34,22 @@ fetch('http://zulu.org/download/')
       const versionPrefix = `1.${v[0]}.${v[1]}`
       const version = `${versionPrefix}${
         v[2] == null ? '' : '-' + v[2]}`
-      const pushVersionPrefix = latestRef && !cache[versionPrefix]
-      cache[versionPrefix] = true
 
       const platform = $($td.get(1)).text().toLowerCase().trim()
       const arch = $($td.get(3)).text().toLowerCase().trim()
       if (arch !== 'intel x64') {
         return
       }
-      const os = platform === 'mac' ? 'darwin' :
+      const os = platform === 'mac' || platform === 'macos' ? 'darwin' :
         platform === 'linux' || platform === 'windows' ? platform : null
       if (!os) {
         return
       }
+
+      const pushVersionPrefix = latestRef && version != versionPrefix &&
+        !cache[os + '/' + versionPrefix]
+      cache[os + '/' + versionPrefix] = true
+
       if (pushVersionPrefix) {
         ee.push({
           os, arch: 'amd64', version: versionPrefix, url
