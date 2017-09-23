@@ -69,8 +69,8 @@ function next(data) {
       .then((data) => ({ns: 'jdk', data})),
 */
     //node('jdk9-java-net.js').then((data) => ({ns: 'jdk', data})),
-    node('zulu-org.js').then((data) => ({ns: 'jdk@zulu', data})),
-    node('zulu-org-eap.js').then((data) => ({ns: 'jdk@zulu', data})),
+    node('zulu-org.js true').then((data) => ({ns: 'jdk@zulu', data})),
+    //node('zulu-org-eap.js').then((data) => ({ns: 'jdk@zulu', data})),
     node('developer-ibm-com-javasdk.js true').then((data) => ({ns: 'jdk@ibm', data})),
     node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk8/releases').then((data) => ({ns: 'jdk@adopt', data})),
     node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk9/releases').then((data) => ({ns: 'jdk@adopt', data})),

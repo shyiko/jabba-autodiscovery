@@ -1,5 +1,4 @@
 const fetch = require('node-fetch')
-const cheerio = require('cheerio')
 
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled promise rejection: ' + reason.stack)
