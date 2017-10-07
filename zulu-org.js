@@ -36,8 +36,9 @@ fetch('http://zulu.org/download/')
         v[2] == null ? '' : '-' + v[2]}`
 
       const platform = $($td.get(1)).text().toLowerCase().trim()
+      const dep = $($td.get(2)).text().toLowerCase().trim()
       const arch = $($td.get(3)).text().toLowerCase().trim()
-      if (arch !== 'intel x64') {
+      if ((arch !== 'intel x64' && arch !== 'arm') || dep.includes('soft float')) {
         return
       }
       const os = platform === 'mac' || platform === 'macos' ? 'darwin' :
@@ -50,13 +51,15 @@ fetch('http://zulu.org/download/')
         !cache[os + '/' + versionPrefix]
       cache[os + '/' + versionPrefix] = true
 
+      const bit = $($td.get(4)).text().toLowerCase().trim()
+      const resolvedArch = arch === 'arm' ? (bit === '64' ? 'arm64' : 'arm') : 'amd64'
       if (pushVersionPrefix) {
         ee.push({
-          os, arch: 'amd64', version: versionPrefix, url
+          os, arch: resolvedArch, version: versionPrefix, url
         })
       }
       ee.push({
-        os, arch: 'amd64', version, url
+        os, arch: resolvedArch, version, url
       })
     })
     console.log(JSON.stringify(ee, null, '  '))
