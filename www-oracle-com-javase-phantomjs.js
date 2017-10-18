@@ -28,17 +28,28 @@ page.open(url, function (status) {
                 ~path.indexOf('linux-arm64-vfp-hflt') ? {os: 'linux', arch: 'arm64'} :
                 null
               if (o) {
-                const version = (
+                var version = (((
                   path.match(/jdk-(\d(u\d+)?)[_-]/) ||
                   path.match(/server-jre-(\d(u\d+)?)-/) ||
                   path.match(/serverjre-(\d(u\d+)?)_/) ||
                   path.match(/sjre-(\d(u\d+)?)-/)
-                )[1].split('u')
+                ) || [])[1] || '').split('u')
+                if (!version[0]) {
+                  version = (
+                    path.match(/jdk-(\d[.]\d+[.]\d+)[_-]/) ||
+                    path.match(/serverjre-(\d[.]\d+[.]\d+)[_-]/)
+                  )[1].split('.')
+                }
                 if (/^sjre-[^-]+-oth/.test(k)) {
                   o.ns = 'jdk@sjre'
                 }
                 o.version = '1.' + version[0] + '.' + (version[1] || 0)
                 o.url = path.replace('/otn/', '/otn-pub/')
+                if (version[2] != null) {
+                  const o2 = JSON.parse(JSON.stringify(o))
+                  o2.version = o.version + '-' + version[2]
+                  r.push(o2)
+                }
                 r.push(o)
               }
             })
