@@ -30,6 +30,6 @@ if [ "$(cmp index.json updated.index.json >/dev/null 2>&1; echo $?)" != "0" ]; t
   )
 
   # submit a PR
-  #curl -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" -d "{\"title\":\"$COMMIT_MESSAGE\",\"body\":\"\",\"head\":\"$BRANCH_NAME\",\"base\":\"master\"}" https://api.github.com/repos/shyiko/jabba/pulls
+  curl -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" -d "{\"title\":\"$COMMIT_MESSAGE\",\"body\":\"\",\"head\":\"$BRANCH_NAME\",\"base\":\"master\"}" https://api.github.com/repos/shyiko/jabba/pulls
 
 fi
