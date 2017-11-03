@@ -11,7 +11,9 @@ const latestRef = process.argv[2] === 'true'
 function list(url) {
   return fetch(url)
     .then((res) => {
-      if (!res.ok) { throw new Error(url + ' ' + res.status) }
+      if (!res.ok) { 
+        throw new Error(url + ' ' + res.status)
+      }
       return res
     })
     .then((res) => res.text())
@@ -71,7 +73,7 @@ list('http://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/')
                   version,
                   url: url + ll[0]
                 })
-              })
+              }, (err) => state)
           )
           .then((state) =>
             list(`http://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/${ref}/linux/i386/`)
@@ -97,7 +99,7 @@ list('http://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/')
                   version,
                   url: url + ll[0]
                 })
-              })
+              }, (err) => state)
           )
       }
       return p
