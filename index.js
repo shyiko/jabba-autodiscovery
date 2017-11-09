@@ -72,7 +72,7 @@ function next(data) {
     node('www-oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html')
       .then((data) => ({ns: 'jdk', data})),
 */
-    //node('jdk9-java-net.js').then((data) => ({ns: 'jdk', data})),
+    node('jdk10-java-net.js').then((data) => ({ns: 'jdk', data})),
     node('zulu-org.js true').then((data) => ({ns: 'jdk@zulu', data})),
     //node('zulu-org-eap.js').then((data) => ({ns: 'jdk@zulu', data})),
     node('developer-ibm-com-javasdk.js true').then((data) => ({ns: 'jdk@ibm', data})),
