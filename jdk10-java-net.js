@@ -27,7 +27,7 @@ fetch('http://jdk.java.net/10/')
               {os: 'darwin', arch: 'amd64', version: `1.10.0-${v}`, url: `${baseURL}/${v}/binaries/jdk-10-ea+${v}_osx-x64_bin.dmg`},
               // {os: 'linux', arch: '386', version: `1.10.0-${v}`, url: `${baseURL}/${v}/binaries/jdk-9+${v}_linux-x86_bin.tar.gz`},
               {os: 'linux', arch: 'amd64', version: `1.10.0-${v}`, url: `${baseURL}/${v}/binaries/jdk-10-ea+${v}_linux-x64_bin.tar.gz`},
-              {os: 'windows', arch: 'amd64', version: `1.10.0-${v}`, url: `${baseURL}/${v}/binaries/jdk-10-ea+${v}_windows-x64_bin.exe`},
+              {os: 'windows', arch: 'amd64', version: `1.10.0-${v}`, url: `${baseURL}/${v}/binaries/jdk-10-ea+${v}_windows-x64_bin.exe`}
               // {os: 'linux', arch: 'arm', version: `1.10.0-${v}`, url: `${baseURL}/${v}/binaries/jdk-9+${v}_linux-arm32-vfp-hflt_bin.tar.gz`},
               // {os: 'linux', arch: 'arm64', version: `1.10.0-${v}`, url: `${baseURL}/${v}/binaries/jdk-9+${v}_linux-arm64-vfp-hflt_bin.tar.gz`}
             )
