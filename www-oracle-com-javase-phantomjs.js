@@ -29,15 +29,15 @@ page.open(url, function (status) {
                 null
               if (o) {
                 var version = (((
-                  path.match(/jdk-(\d(u\d+)?)[_-]/) ||
-                  path.match(/server-jre-(\d(u\d+)?)-/) ||
-                  path.match(/serverjre-(\d(u\d+)?)_/) ||
-                  path.match(/sjre-(\d(u\d+)?)-/)
+                  path.match(/jdk-(\d+(u\d+)?)[_-]/) ||
+                  path.match(/server-jre-(\d+(u\d+)?)-/) ||
+                  path.match(/serverjre-(\d+(u\d+)?)_/) ||
+                  path.match(/sjre-(\d+(u\d+)?)-/)
                 ) || [])[1] || '').split('u')
                 if (!version[0]) {
                   version = (
-                    path.match(/jdk-(\d[.]\d+[.]\d+)[_-]/) ||
-                    path.match(/serverjre-(\d[.]\d+[.]\d+)[_-]/)
+                    path.match(/jdk-(\d+[.]\d+[.]\d+)[_-]/) ||
+                    path.match(/serverjre-(\d+[.]\d+[.]\d+)[_-]/)
                   )[1].split('.')
                 }
                 if (/^sjre-[^-]+-oth/.test(k)) {
