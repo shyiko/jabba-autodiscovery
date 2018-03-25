@@ -31,11 +31,11 @@ fetch('http://zulu.org/download/')
       const vr = $($td.get(0)).text().toLowerCase().trim()
       const v = vr.includes('u') ? vr.split('u') : vr.split('.')
 
-      const versionPrefix = `1.${v[0]}.${v[1]}`
+      const versionPrefix = `1.${v[0]}.${v[1] == null ? '0' : v[1]}`
       const version = `${versionPrefix}${
         v[2] == null ? '' : '-' + v[2]}`
 
-      const platform = $($td.get(1)).text().toLowerCase().trim()
+        const platform = $($td.get(1)).text().toLowerCase().trim()
       const dep = $($td.get(2)).text().toLowerCase().trim()
       const arch = $($td.get(3)).text().toLowerCase().trim()
       if ((arch !== 'intel x64' && arch !== 'arm') || dep.includes('soft float')) {
