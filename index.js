@@ -49,7 +49,7 @@ function next(data) {
       truncate(byArch[arch], 'jdk@sjre')
       truncate(byArch[arch], 'jdk@ibm')
       truncate(byArch[arch], 'jdk@zulu')
-      truncate(byArch[arch], 'openjdk')
+      truncate(byArch[arch], 'jdk@openjdk')
     })
   })
   return Promise.all([
@@ -75,8 +75,8 @@ function next(data) {
 */
 //    node('jdk10-java-net.js').then((data) => ({ns: 'jdk', data})),
     node('jdk11-java-net.js').then((data) => ({ns: 'jdk', data})),
-    node('openjdk10-java-net.js').then((data) => ({ns: 'openjdk', data})),
-    node('openjdk11-java-net.js').then((data) => ({ns: 'openjdk', data})),
+    node('openjdk10-java-net.js').then((data) => ({ns: 'jdk@openjdk', data})),
+    node('openjdk11-java-net.js').then((data) => ({ns: 'jdk@openjdk', data})),
     node('zulu-org.js true').then((data) => ({ns: 'jdk@zulu', data})),
     //node('zulu-org-eap.js').then((data) => ({ns: 'jdk@zulu', data})),
     node('developer-ibm-com-javasdk.js true').then((data) => ({ns: 'jdk@ibm', data})),
