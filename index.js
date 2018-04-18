@@ -74,6 +74,7 @@ function next(data) {
       .then((data) => ({ns: 'jdk', data})),
 */
 //    node('jdk10-java-net.js').then((data) => ({ns: 'jdk', data})),
+    node('graalvm.js').then((data) => ({ns: 'jdk@graalvm', data})),
     node('jdk11-java-net.js').then((data) => ({ns: 'jdk', data})),
     node('openjdk10-java-net.js').then((data) => ({ns: 'jdk@openjdk', data})),
     node('openjdk11-java-net.js').then((data) => ({ns: 'jdk@openjdk', data})),
