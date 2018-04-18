@@ -19,7 +19,7 @@ fetch('http://jdk.java.net/11/')
     const $ = cheerio.load(html)
     const ee = []
     function resolve(v) {
-      fetch(`http://download.java.net/java/early_access/jdk11/${v}/BCL/jre-11-ea+${v}_windows-x64_bin.exe.sha256`,
+      fetch(`https://download.java.net/java/early_access/jdk11/${v}/BCL/jdk-11-ea+${v}_windows-x64_bin.exe.sha256`,
           {method: 'HEAD'})
         .then((res) => {
           if (res.ok) {
