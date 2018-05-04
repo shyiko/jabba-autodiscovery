@@ -81,9 +81,11 @@ function next(data) {
     node('zulu-org.js true').then((data) => ({ns: 'jdk@zulu', data})),
     //node('zulu-org-eap.js').then((data) => ({ns: 'jdk@zulu', data})),
     node('developer-ibm-com-javasdk.js true').then((data) => ({ns: 'jdk@ibm', data})),
-    // node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk8/releases').then((data) => ({ns: 'jdk@adopt', data})),
-    // node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk9/releases').then((data) => ({ns: 'jdk@adopt', data})),
-    // node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk9-openj9/releases').then((data) => ({ns: 'jdk@adopt-openj9', data})),
+    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk8/releases').then((data) => ({ns: 'jdk@adopt', data})),
+    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk8-openj9/releases').then((data) => ({ns: 'jdk@adopt-openj9', data})),
+    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk9/releases').then((data) => ({ns: 'jdk@adopt', data})),
+    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk9-openj9/releases').then((data) => ({ns: 'jdk@adopt-openj9', data})),
+    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk10/releases').then((data) => ({ns: 'jdk@adopt', data}))
 /*
     node('adoptopenjdk-net.js http://localhost:8000/adoptopenjdk-openjdk8.json').then((data) => ({ns: 'jdk@adopt', data})),
 */
