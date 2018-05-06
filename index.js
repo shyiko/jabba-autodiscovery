@@ -49,7 +49,8 @@ function next(data) {
       truncate(byArch[arch], 'jdk@sjre')
       truncate(byArch[arch], 'jdk@ibm')
       truncate(byArch[arch], 'jdk@zulu')
-      truncate(byArch[arch], 'jdk@openjdk')
+      truncate(byArch[arch], 'jdk@openjdk'),
+      truncate(byArch[arch], 'jdk@openjdk-shenandoah')
     })
   })
   return Promise.all([
@@ -85,7 +86,10 @@ function next(data) {
     node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk8-openj9/releases').then((data) => ({ns: 'jdk@adopt-openj9', data})),
     node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk9/releases').then((data) => ({ns: 'jdk@adopt', data})),
     node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk9-openj9/releases').then((data) => ({ns: 'jdk@adopt-openj9', data})),
-    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk10/releases').then((data) => ({ns: 'jdk@adopt', data}))
+    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk10/releases').then((data) => ({ns: 'jdk@adopt', data})),
+    node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk8/').then((data) => ({ns: 'jdk@openjdk-shenandoah', data})),
+    node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk9/').then((data) => ({ns: 'jdk@openjdk-shenandoah', data})),
+    node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk10/').then((data) => ({ns: 'jdk@openjdk-shenandoah', data}))
 /*
     node('adoptopenjdk-net.js http://localhost:8000/adoptopenjdk-openjdk8.json').then((data) => ({ns: 'jdk@adopt', data})),
 */
