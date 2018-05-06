@@ -103,6 +103,7 @@ function next(data) {
           (
           e.url.endsWith('.exe') ? 'exe+' :
           e.url.endsWith('.tar.gz') ? 'tgz+' :
+          e.url.endsWith('.tar.xz') ? 'tgx+' :
           e.url.endsWith('.zip') ? 'zip+' :
           e.url.endsWith('.dmg') ? 'dmg+' :
           e.url.endsWith('.bin') && ~ns.indexOf('@ibm') ? 'ia+' :
