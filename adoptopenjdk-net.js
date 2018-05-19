@@ -18,7 +18,7 @@ fetch(url)
     if (!res.ok) { throw new Error('' + res.status) }
     return res
   })
-  .then((res) => res.json())
+  .then(_ => _.headers.get('content-type').includes('application/json') ? _.json() : [])
   .then((res) => {
     const ee = []
     const cache = {}
