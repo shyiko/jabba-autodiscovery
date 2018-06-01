@@ -7,17 +7,19 @@ if [ "$GITHUB_TOKEN" == "" ]; then
   exit 1
 fi
 
-curl -sL https://raw.githubusercontent.com/shyiko/jabba/master/index.json > index.json
-cat index.json | node index.js > updated.index.json
+curl -sL https://raw.githubusercontent.com/shyiko/jabba/master/index.json > v0.index.json
+node src > raw.index.json
+node v0.js raw.index.json > updated.v0.index.json
 
-if [ "$(cmp index.json updated.index.json >/dev/null 2>&1; echo $?)" != "0" ]; then
+DIFF=$(node sync.diff.js v0.index.json updated.v0.index.json)
+if [ "$DIFF" != "" ]; then
 
   CHECKOUT_DIR=$(mktemp -d /tmp/jabba-autodiscovery.XXXXXX)
   git clone --single-branch --branch=master https://$GITHUB_TOKEN@github.com/shyiko/jabba $CHECKOUT_DIR
-  cp updated.index.json $CHECKOUT_DIR/index.json
+  cp updated.v0.index.json $CHECKOUT_DIR/index.json
   TIMESTAMP="$(date +%Y-%m-%d)"
   BRANCH_NAME="autodiscovery/$TIMESTAMP"
-  COMMIT_MESSAGE="$TIMESTAMP auto discovery"
+  COMMIT_MESSAGE="Synced $DIFF"
   (
     cd $CHECKOUT_DIR &&
     git config user.email "stanley.shyiko@gmail.com" &&

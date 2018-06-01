@@ -8,16 +8,14 @@
     "type": "git",
     "url": "https://github.com/shyiko/jabba-autodiscovery"
   },
-  "dependencies": {
-    "cheerio": "^0.22.0",
-    "concat-stream": "^1.5.2",
+  "devDependencies": {
+    "domino": "^2.0.1",
     "json-stable-stringify": "^1.0.1",
     "node-fetch": "^1.6.3",
-    "phantomjs-prebuilt": "^2.1.14",
-    "semver": "^5.4.1"
+    "puppeteer": "^1.4.0"
   },
   "engines": {
-    "node": ">=6.6.0"
+    "node": ">=8.6.0"
   },
-  "private": false
+  "private": true
 }

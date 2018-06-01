@@ -1,4 +1,3 @@
-.tmp
-node_modules
-index.json
-updated.index.json
+.tmp/
+node_modules/
+*.index.json
