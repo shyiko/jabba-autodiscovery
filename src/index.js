@@ -48,8 +48,6 @@ module.exports = async (m = _ => _) => {
     // todo: Project Amber (https://adoptopenjdk.net/nightly.html?variant=amber)
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk8/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
-    node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk9/')
-      .then((data) => ({ns: 'openjdk-shenandoah', data})),
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk10/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
     node('public-dhe-ibm-com.js')
