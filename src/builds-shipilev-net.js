@@ -17,7 +17,7 @@ const domino = require('domino')
       }
       continue
     }
-    const m = url.match(/openjdk-shenandoah-jdk(\d+)-b(\d+)-(x86(?:_64)?|aarch64|arm32-hflt)-release.tar.xz$/)
+    const m = url.match(/openjdk-shenandoah-jdk(\d+)-b(\d+).*-(x86(?:_64)?|aarch64|arm32-hflt)-release.tar.xz$/)
     if (m == null) {
       console.error(`skip(url): ${url}`)
       continue
