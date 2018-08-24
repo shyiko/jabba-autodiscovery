@@ -48,7 +48,8 @@ module.exports = (nn) => {
       if (m != null && (ns === 'jdk@zulu' || ns === 'jdk@sjre' || ns === 'jdk')) { // 8u171-b11
         version = `1.${m[1]}.${m[2]}`
       } else
-      if (m != null && ns === 'jdk@adopt' || ns === 'jdk@adopt-openj9') { // 8u171-b11
+      if (m != null && ns === 'jdk@adopt' || ns === 'jdk@adopt-openj9') { // 8u171-b11 or 9.0.4+12
+        m = m || version.match(/^(\d+)(?:.(\d+))?(?:.(\d+))?(?:\+(.+))?$/)
         version = `1.${m[1]}.${m[2]}${m[3] ? `-${m[3]}` : ''}`
       } else
       if (ns === 'jdk@ibm') { // 1.2.3.4
