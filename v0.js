@@ -69,7 +69,7 @@ module.exports = (nn) => {
           process.exit(1)
         }
         const pre = m[4]
-        if (pre === 'zgcea' || pre === 'mvtea') {
+        if (pre === 'zgcea' || pre === 'valhallaea') {
           return // not supported by jabba@<1.0.0
         }
         if (pre === 'ea') {

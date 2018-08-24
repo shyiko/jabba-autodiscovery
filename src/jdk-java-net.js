@@ -41,7 +41,14 @@ const domino = require('domino')
       console.error(`skip(os/arch): ${url}`)
       continue
     }
-    const version = m[1]
+    let version = m[1].replace('-lworldea', '-valhallaea')
+    if (url.includes('early_access') && !version.includes('ea')) {
+      if (version.includes('+')) {
+        version = version.replace('+', '-ea+')
+      } else {
+        version = version + '-ea'
+      }
+    }
     ee.push({
       ns,
       os,

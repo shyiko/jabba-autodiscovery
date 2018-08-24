@@ -61,7 +61,7 @@ module.exports = async (m = _ => _) => {
     node('jdk-java-net.js http://jdk.java.net/10/'),
     node('jdk-java-net.js http://jdk.java.net/11/'),
     node('jdk-java-net.js http://jdk.java.net/valhalla/'),
-    node('jdk-java-net.js http://jdk.java.net/zgc/'),
+    // node('jdk-java-net.js http://jdk.java.net/zgc/'), // incorporated in JDK 11-ea+18
     node('jdk-java-net.js http://jdk.java.net/archive/'),
     // todo: http://www.oracle.com/technetwork/java/javase/downloads/tzupdater-download-513681.html
     // todo: http://www.oracle.com/technetwork/java/javase/documentation/jdk10-doc-downloads-4417029.html
