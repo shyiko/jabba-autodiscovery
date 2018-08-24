@@ -94,7 +94,7 @@ module.exports = (nn) => {
         let ranges = []
         if (provider === 'jdk' || provider === 'jdk@sjre' || provider === 'jdk@openjdk') {
           // jdk/jdk@openjdk 1.10.0-1 -> 1.10.0
-          ranges = [{k: '1.10', v: '1.10.0'}]
+          ranges = [{k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}]
         } else
         if (provider === 'jdk@ibm') {
           // jdk@ibm 1.8.0-5.16 -> 1.8.0 (same for 1.7/1.6)
@@ -102,10 +102,10 @@ module.exports = (nn) => {
         } else
         if (provider === 'jdk@openjdk-shenandoah') {
           // jdk@openjdk-shenandoah 1.10.0-242 -> 1.10.0 (same for 1.9/1.8)
-          ranges = [{k: '1.10', v: '1.10.0'}, {k: '1.9', v: '1.9.0'}, {k: '1.8', v: '1.8.0'}]
+          ranges = [{k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}, {k: '1.9', v: '1.9.0'}, {k: '1.8', v: '1.8.0'}]
         } else
         if (provider === 'jdk@zulu') {
-          ranges = [{k: '1.10', v: '1.10.0'}, {k: '1.9', v: '1.9.0'}]
+          ranges = [{k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}, {k: '1.9', v: '1.9.0'}]
         }
         if (ranges.length) {
           const block = index[os][arch][provider]
