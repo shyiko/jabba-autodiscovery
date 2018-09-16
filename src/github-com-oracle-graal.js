@@ -24,6 +24,24 @@ console.log(
       "arch": "amd64",
       "version": "1.0.0-rc5",
       "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc5/graalvm-ce-1.0.0-rc5-linux-amd64.tar.gz"
+    },
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "version": "1.0.0-rc5",
+      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc5/graalvm-ce-1.0.0-rc5-macos-amd64.tar.gz"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "version": "1.0.0-rc6",
+      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc6/graalvm-ce-1.0.0-rc6-linux-amd64.tar.gz"
+    },
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "version": "1.0.0-rc6",
+      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc6/graalvm-ce-1.0.0-rc6-macos-amd64.tar.gz"
     }
   ], null, '  ')
 )
