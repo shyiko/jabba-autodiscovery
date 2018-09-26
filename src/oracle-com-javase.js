@@ -4,7 +4,8 @@ const puppeteer = require('puppeteer')
 ;(async (url) => {
   const browser = await puppeteer.launch({args: ['--no-sandbox']})
   const page = await browser.newPage()
-  await page.goto(url, {waitUntil: ['load', 'networkidle0']})
+  const res = await page.goto(url, {waitUntil: ['load', 'networkidle0']})
+  console.error(`GET ${url} ${res.status()}`)
   let downloads
   try {
     downloads = await page.evaluate(() => {
