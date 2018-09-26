@@ -58,29 +58,29 @@ module.exports = async (m = _ => _) => {
       .then((data) => ({ns: 'ibm-sdk', data})),
     // todo: Alpine Linux	variant
     // todo: JavaDocs
-    node('jdk-java-net.js http://jdk.java.net/10/'),
-    node('jdk-java-net.js http://jdk.java.net/11/'),
-    node('jdk-java-net.js http://jdk.java.net/12/'),
-    node('jdk-java-net.js http://jdk.java.net/valhalla/'),
-    // node('jdk-java-net.js http://jdk.java.net/zgc/'), // incorporated in JDK 11-ea+18
-    node('jdk-java-net.js http://jdk.java.net/archive/'),
-    // todo: http://www.oracle.com/technetwork/java/javase/downloads/tzupdater-download-513681.html
-    // todo: http://www.oracle.com/technetwork/java/javase/documentation/jdk10-doc-downloads-4417029.html
-    // todo: http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html
-    node('oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
+    node('jdk-java-net.js https://jdk.java.net/10/'),
+    node('jdk-java-net.js https://jdk.java.net/11/'),
+    node('jdk-java-net.js https://jdk.java.net/12/'),
+    node('jdk-java-net.js https://jdk.java.net/valhalla/'),
+    // node('jdk-java-net.js https://jdk.java.net/zgc/'), // incorporated in JDK 11-ea+18
+    node('jdk-java-net.js https://jdk.java.net/archive/'),
+    // todo: https://www.oracle.com/technetwork/java/javase/downloads/tzupdater-download-513681.html
+    // todo: https://www.oracle.com/technetwork/java/javase/documentation/jdk10-doc-downloads-4417029.html
+    // todo: https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
       .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html')
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html')
       .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html')
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html')
       .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html')
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html')
       .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html')
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html')
       .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html'),
-    node('oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'),
-    node('oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/sjre10-downloads-4417025.html'),
-    node('oracle-com-javase.js http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html'),
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html'),
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'),
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/sjre10-downloads-4417025.html'),
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html'),
     node('support-apple-com.js')
   ]).catch((err) => {
     console.error(err)
