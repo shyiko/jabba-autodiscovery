@@ -67,6 +67,8 @@ module.exports = async (m = _ => _) => {
     // todo: https://www.oracle.com/technetwork/java/javase/downloads/tzupdater-download-513681.html
     // todo: https://www.oracle.com/technetwork/java/javase/documentation/jdk10-doc-downloads-4417029.html
     // todo: https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html
+    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html')
+      .then((data) => ({require: ['otn-account'], data})),
     node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
       .then((data) => ({require: ['otn-account'], data})),
     node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html')
