@@ -64,30 +64,36 @@ module.exports = async (m = _ => _) => {
     node('jdk-java-net.js https://jdk.java.net/valhalla/'),
     // node('jdk-java-net.js https://jdk.java.net/zgc/'), // incorporated in JDK 11-ea+18
     node('jdk-java-net.js https://jdk.java.net/archive/'),
-    // todo: https://www.oracle.com/technetwork/java/javase/downloads/tzupdater-download-513681.html
-    // todo: https://www.oracle.com/technetwork/java/javase/documentation/jdk10-doc-downloads-4417029.html
-    // todo: https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html')
-      .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
-      .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html')
-      .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html')
-      .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html')
-      .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html')
-      .then((data) => ({require: ['otn-account'], data})),
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html'),
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'),
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/sjre10-downloads-4417025.html'),
-    node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html'),
     node('support-apple-com.js')
   ]).catch((err) => {
     console.error(err)
     process.exit(1)
   })
+  // oracle.com is scraped sequentially, otherwise we may get 403
+  for (const sync of [
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html'),
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html'),
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'),
+    // oracle-server-jre
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/sjre10-downloads-4417025.html'),
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html'),
+    // archive (requires OTN account)
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
+      .then((data) => ({require: ['otn-account'], data})),
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html')
+      .then((data) => ({require: ['otn-account'], data})),
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html')
+      .then((data) => ({require: ['otn-account'], data})),
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html')
+      .then((data) => ({require: ['otn-account'], data})),
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html')
+      .then((data) => ({require: ['otn-account'], data}))
+  ]) {
+    nn.push(await sync())
+  }
+  // todo: https://www.oracle.com/technetwork/java/javase/downloads/tzupdater-download-513681.html
+  // todo: https://www.oracle.com/technetwork/java/javase/documentation/jdk10-doc-downloads-4417029.html
+  // todo: https://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html
   console.log(stringify(m(nn), {
     cmp: (l, r) => naturalSort(r.key, l.key),
     space: 2

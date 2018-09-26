@@ -1,20 +1,22 @@
 const puppeteer = require('puppeteer')
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+// const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 // e.g. http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html
 ;(async (url) => {
   const browser = await puppeteer.launch({args: ['--no-sandbox']})
   const page = await browser.newPage()
-  let res
-  let maxAttempts = 3
-  while (maxAttempts-- > 0) {
-    res = await page.goto(url, {waitUntil: ['load', 'networkidle0']})
-    console.error(`GET ${url} ${res.status()}`)
-    if (res.ok()) {
-      break
-    }
-    await delay(3000)
-  }
+  const res = await page.goto(url, {waitUntil: ['load', 'networkidle0']})
+  console.error(`GET ${url} ${res.status()}`)
+  // let res
+  // let maxAttempts = 3
+  // while (maxAttempts-- > 0) {
+  //   res = await page.goto(url, {waitUntil: ['load', 'networkidle0']})
+  //   console.error(`GET ${url} ${res.status()}`)
+  //   if (res.ok()) {
+  //     break
+  //   }
+  //   await delay(15000)
+  // }
   let downloads
   try {
     downloads = await page.evaluate(() => {
