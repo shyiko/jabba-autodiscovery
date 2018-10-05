@@ -23,18 +23,22 @@ module.exports = async (m = _ => _) => {
     node('azul-com.js https://www.azul.com/downloads/zulu-embedded/')
       .then((data) => ({ns: 'zulu-embedded', data})),
     // api.adoptopenjdk.net is constantly down
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-releases/master/releases.json')
+    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-binaries/master/releases.json')
       .then((data) => ({ns: 'adoptopenjdk', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-openj9-releases/master/releases.json')
+    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-openj9-releases/master/releases.json openj9')
       .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk9-releases/master/releases.json')
+    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk9-binaries/master/releases.json')
       .then((data) => ({ns: 'adoptopenjdk', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk9-openj9-releases/master/releases.json')
+    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk9-openj9-releases/master/releases.json openj9')
       .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-/*
     node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk10-releases/master/releases.json')
       .then((data) => ({ns: 'adoptopenjdk', data})),
-*/
+    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk10-openj9-releases/master/releases.json openj9')
+      .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
+    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk11-binaries/master/releases.json')
+      .then((data) => ({ns: 'adoptopenjdk', data})),
+    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk11-binaries/master/releases.json openj9')
+      .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
 /*
     node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk8/releases')
       .then((data) => ({ns: 'adoptopenjdk', data})),

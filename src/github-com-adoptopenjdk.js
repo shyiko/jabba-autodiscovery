@@ -2,7 +2,7 @@ const fetch = require('node-fetch')
 const fetch2xx = _ => _.ok ? _ : _.buffer().then(_ => { throw new Error(`${_.status}`) })
 
 // e.g. https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-releases/master/releases.json
-;(async (url) => {
+;(async (url, openj9) => {
   const json = await fetch(url).then(fetch2xx).then(_ => _.json())
   const ee = []
   for (const e of json) {
@@ -17,10 +17,18 @@ const fetch2xx = _ => _.ok ? _ : _.buffer().then(_ => { throw new Error(`${_.sta
         }
         continue
       }
-      const o = url.includes('x64_Linux') ? {os: 'linux', arch: 'amd64'} :
-        url.includes('aarch64_Linux') ? {os: 'linux', arch: 'arm64'} :
-        url.includes('x64_Mac') ? {os: 'darwin', arch: 'amd64'} :
-        url.includes('x64_Win') ? {os: 'windows', arch: 'amd64'} :
+      if (url.includes('jre_')) {
+        console.error(`skip(jre): ${url}`)
+        continue
+      }
+      if (url.includes('linuxXL') || !(openj9 ^ !url.includes('openj9'))) {
+        console.error(`skip(qualifier): ${url}`)
+        continue
+      }
+      const o = url.toLowerCase().includes('x64_linux') ? {os: 'linux', arch: 'amd64'} :
+        url.toLowerCase().includes('aarch64_linux') ? {os: 'linux', arch: 'arm64'} :
+        url.toLowerCase().includes('x64_mac') ? {os: 'darwin', arch: 'amd64'} :
+        url.toLowerCase().includes('x64_win') ? {os: 'windows', arch: 'amd64'} :
         null
       if (o == null) {
         console.error(`skip(os/arch): ${url}`)
@@ -30,4 +38,4 @@ const fetch2xx = _ => _.ok ? _ : _.buffer().then(_ => { throw new Error(`${_.sta
     }
   }
   console.log(JSON.stringify(ee, null, '  '))
-})(process.argv[2])
+})(process.argv[2], process.argv[3] === 'openj9')
