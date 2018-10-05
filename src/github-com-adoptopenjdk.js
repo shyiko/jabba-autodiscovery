@@ -34,7 +34,11 @@ const fetch2xx = _ => _.ok ? _ : _.buffer().then(_ => { throw new Error(`${_.sta
         console.error(`skip(os/arch): ${url}`)
         continue
       }
-      ee.push({...o, version, url})
+      ee.push({
+        ...o,
+        version: version.replace(/^(\d+)(\+.*)?$/, '$1.0.0$2'),
+        url
+      })
     }
   }
   console.log(JSON.stringify(ee, null, '  '))
