@@ -76,10 +76,8 @@ module.exports = async (m = _ => _) => {
   // oracle.com is scraped sequentially, otherwise we may get 403
   for (const sync of [
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html'),
-    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html'),
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'),
     // oracle-server-jre
-    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/sjre10-downloads-4417025.html'),
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html'),
     // archive (requires OTN account)
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
