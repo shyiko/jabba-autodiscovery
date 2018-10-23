@@ -54,6 +54,18 @@ console.log(
       "arch": "amd64",
       "version": "1.0.0-rc7",
       "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc7/graalvm-ce-1.0.0-rc7-macos-amd64.tar.gz"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "version": "1.0.0-rc8",
+      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc8/graalvm-ce-1.0.0-rc8-linux-amd64.tar.gz"
+    },
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "version": "1.0.0-rc8",
+      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc8/graalvm-ce-1.0.0-rc8-macos-amd64.tar.gz"
     }
   ], null, '  ')
 )
