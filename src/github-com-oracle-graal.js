@@ -1,71 +1,31 @@
 // https://github.com/oracle/graal/releases
-console.log(
-  JSON.stringify([
-    {
-      "os": "linux",
-      "arch": "amd64",
-      "version": "1.0.0-rc1",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc1/graalvm-ce-1.0.0-rc1-linux-amd64.tar.gz"
-    },
-    {
-      "os": "linux",
-      "arch": "amd64",
-      "version": "1.0.0-rc2",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc2/graalvm-ce-1.0.0-rc2-linux-amd64.tar.gz"
-    },
-    {
-      "os": "linux",
-      "arch": "amd64",
-      "version": "1.0.0-rc3",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc3/graalvm-ce-1.0.0-rc3-linux-amd64.tar.gz"
-    },
-    {
-      "os": "linux",
-      "arch": "amd64",
-      "version": "1.0.0-rc5",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc5/graalvm-ce-1.0.0-rc5-linux-amd64.tar.gz"
-    },
-    {
-      "os": "darwin",
-      "arch": "amd64",
-      "version": "1.0.0-rc5",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc5/graalvm-ce-1.0.0-rc5-macos-amd64.tar.gz"
-    },
-    {
-      "os": "linux",
-      "arch": "amd64",
-      "version": "1.0.0-rc6",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc6/graalvm-ce-1.0.0-rc6-linux-amd64.tar.gz"
-    },
-    {
-      "os": "darwin",
-      "arch": "amd64",
-      "version": "1.0.0-rc6",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc6/graalvm-ce-1.0.0-rc6-macos-amd64.tar.gz"
-    },
-    {
-      "os": "linux",
-      "arch": "amd64",
-      "version": "1.0.0-rc7",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc7/graalvm-ce-1.0.0-rc7-linux-amd64.tar.gz"
-    },
-    {
-      "os": "darwin",
-      "arch": "amd64",
-      "version": "1.0.0-rc7",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc7/graalvm-ce-1.0.0-rc7-macos-amd64.tar.gz"
-    },
-    {
-      "os": "linux",
-      "arch": "amd64",
-      "version": "1.0.0-rc8",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc8/graalvm-ce-1.0.0-rc8-linux-amd64.tar.gz"
-    },
-    {
-      "os": "darwin",
-      "arch": "amd64",
-      "version": "1.0.0-rc8",
-      "url": "https://github.com/oracle/graal/releases/download/vm-1.0.0-rc8/graalvm-ce-1.0.0-rc8-macos-amd64.tar.gz"
+
+const fetch = require('node-fetch')
+
+;(async () => {
+  const headers = {}
+  if (process.env.GITHUB_TOKEN) {
+    headers['authorization'] = `token ${process.env.GITHUB_TOKEN}`
+  }
+  const res = await fetch('https://api.github.com/repos/oracle/graal/releases', {headers})
+  const releases = await res.json()
+  const acc = []
+  for (const release of releases) {
+    const m = release.tag_name.match(/^vm-(\d.+)$/)
+    if (m == null) {
+      continue
     }
-  ], null, '  ')
-)
+    for (const asset of release.assets || []) {
+      const url = asset.browser_download_url
+      if (url.includes('linux-amd64')) {
+        acc.push({os: "linux", arch: "amd64", version: m[1], url})
+      } else
+      if (url.includes('macos-amd64')) {
+        acc.push({os: "darwin", arch: "amd64", version: m[1], url})
+      } else {
+        console.error(`skip(url): ${url}`)
+      }
+    }
+  }
+  console.log(JSON.stringify(acc, null, '  '))
+})()
