@@ -23,8 +23,11 @@ module.exports = async (m = _ => _) => {
     node('azul-com.js https://www.azul.com/downloads/zulu-embedded/')
       .then((data) => ({ns: 'zulu-embedded', data})),
     // api.adoptopenjdk.net is constantly down
+/*
     node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-binaries/master/releases.json')
       .then((data) => ({ns: 'adoptopenjdk', data})),
+    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-binaries/master/releases.json openj9')
+    .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
     node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-openj9-releases/master/releases.json openj9')
       .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
     node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk9-binaries/master/releases.json')
@@ -39,18 +42,11 @@ module.exports = async (m = _ => _) => {
       .then((data) => ({ns: 'adoptopenjdk', data})),
     node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk11-binaries/master/releases.json openj9')
       .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-/*
-    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk8/releases')
-      .then((data) => ({ns: 'adoptopenjdk', data})),
-    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk8-openj9/releases')
-      .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk9/releases')
-      .then((data) => ({ns: 'adoptopenjdk', data})),
-    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk9-openj9/releases')
-      .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-    node('adoptopenjdk-net.js https://api.adoptopenjdk.net/openjdk10/releases')
-      .then((data) => ({ns: 'adoptopenjdk', data})),
 */
+    node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk8'),
+    node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk9'),
+    node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk10'),
+    node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk11'),
     // todo: Project Amber (https://adoptopenjdk.net/nightly.html?variant=amber)
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk8/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
