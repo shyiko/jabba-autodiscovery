@@ -81,6 +81,9 @@ module.exports = (nn) => {
       if (ns === 'jdk@zulu') {
         version = version.replace(/([^0-9])0+(\d+)/g, '$1$2')
       }
+      if ((ns === 'jdk@adopt' || ns === 'jdk@adopt-openj9') && !version.includes('-')) {
+        version = `${version}-0`
+      }
       const url = type + e.url
       if (provider[version] != null && provider[version] !== url) {
         console.error(`overriding ${provider[version]} with ${url}`)
