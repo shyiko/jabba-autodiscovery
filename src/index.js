@@ -59,6 +59,7 @@ module.exports = async (m = _ => _) => {
     node('jdk-java-net.js https://jdk.java.net/10/'),
     node('jdk-java-net.js https://jdk.java.net/11/'),
     node('jdk-java-net.js https://jdk.java.net/12/'),
+    node('jdk-java-net.js https://jdk.java.net/13/'),
     node('jdk-java-net.js https://jdk.java.net/valhalla/'),
     // node('jdk-java-net.js https://jdk.java.net/zgc/'), // incorporated in JDK 11-ea+18
     node('jdk-java-net.js https://jdk.java.net/archive/'),

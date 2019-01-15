@@ -97,7 +97,7 @@ module.exports = (nn) => {
         let ranges = []
         if (provider === 'jdk' || provider === 'jdk@sjre' || provider === 'jdk@openjdk') {
           // jdk/jdk@openjdk 1.10.0-1 -> 1.10.0
-          ranges = [{k: '1.12', v: '1.12.0'}, {k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}]
+          ranges = [{k: '1.13', v: '1.13.0'}, {k: '1.12', v: '1.12.0'}, {k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}]
         } else
         if (provider === 'jdk@ibm') {
           // jdk@ibm 1.8.0-5.16 -> 1.8.0 (same for 1.7/1.6)
