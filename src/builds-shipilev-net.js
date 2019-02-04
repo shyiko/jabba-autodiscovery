@@ -34,7 +34,7 @@ const domino = require('domino')
     ee.push({
       os: m[2],
       arch,
-      version: `${m[1]}-b00`,
+      version: `${m[1]}`,
       url
     })
   }

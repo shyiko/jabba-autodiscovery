@@ -57,8 +57,8 @@ module.exports = (nn) => {
         version = `1.${m[1]}.${m[2]}-${m[3]}.${m[4]}`
       } else
       if (ns === 'jdk@openjdk-shenandoah') { // 10-b242
-        m = version.match(/^(\d+)-b(\d+)$/)
-        version = `1.${m[1]}.0-${m[2]}`
+        m = version.match(/^(\d+)$/)
+        version = `1.${m[1]}.0`
       } else
       if (ns === 'jdk@graalvm') { // 1.0.0-rc1
         version = version.replace('-rc', '-')
@@ -99,16 +99,12 @@ module.exports = (nn) => {
           // jdk/jdk@openjdk 1.10.0-1 -> 1.10.0
           ranges = [{k: '1.13', v: '1.13.0'}, {k: '1.12', v: '1.12.0'}, {k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}]
         } else
+        if (provider === 'jdk@zulu') {
+          ranges = [{k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}, {k: '1.9', v: '1.9.0'}]
+        } else
         if (provider === 'jdk@ibm') {
           // jdk@ibm 1.8.0-5.16 -> 1.8.0 (same for 1.7/1.6)
           ranges = [{k: '1.8', v: '1.8.0'}, {k: '1.7.0', v: '1.7.0'}, {k: '1.7.1', v: '1.7.1'}, {k: '1.6', v: '1.6.0'}]
-        } else
-        if (provider === 'jdk@openjdk-shenandoah') {
-          // jdk@openjdk-shenandoah 1.10.0-242 -> 1.10.0 (same for 1.9/1.8)
-          ranges = [{k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}, {k: '1.9', v: '1.9.0'}, {k: '1.8', v: '1.8.0'}]
-        } else
-        if (provider === 'jdk@zulu') {
-          ranges = [{k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}, {k: '1.9', v: '1.9.0'}]
         }
         if (ranges.length) {
           const block = index[os][arch][provider]
