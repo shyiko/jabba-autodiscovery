@@ -11,13 +11,13 @@ const domino = require('domino')
   const ee = []
   for (const node of Array.from(nodeList)) { // for of isn't working because of the "domino"
     const url = node.href
-    if (!url.endsWith('.tar.xz')) {
+    if (!url.endsWith('.tar.xz') && !url.endsWith('.tar.gz')) {
       if (!url.endsWith('.log')) {
         console.error(`skip(ext): ${url}`)
       }
       continue
     }
-    const m = url.match(/openjdk-shenandoah-jdk(\d+)-b(\d+).*-(x86(?:_64)?|aarch64|arm32-hflt)-release.tar.xz$/)
+    const m = url.match(/openjdk-shenandoah-jdk(\d+)-latest-(linux|windows)-(x86(?:_64)?|aarch64|arm32-hflt)-release.tar.(?:xz|gz)$/)
     if (m == null) {
       console.error(`skip(url): ${url}`)
       continue
@@ -32,9 +32,9 @@ const domino = require('domino')
       continue
     }
     ee.push({
-      os: 'linux',
+      os: m[2],
       arch,
-      version: `${m[1]}-b${m[2]}`,
+      version: `${m[1]}-b00`,
       url
     })
   }
