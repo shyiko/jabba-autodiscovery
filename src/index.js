@@ -52,8 +52,10 @@ module.exports = async (m = _ => _) => {
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk11/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
+/*	  
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk12/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
+*/      
     node('public-dhe-ibm-com.js')
       .then((data) => ({ns: 'ibm-sdk', data})),
     // todo: Alpine Linux	variant
