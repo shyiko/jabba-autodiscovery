@@ -38,6 +38,7 @@ const domino = require('domino')
     const version = versionMatch[1]
       .replace(/^([678])[.]0[.]/, '$1u')
       .replace(/^1.([678])[.]0_(\d+).*/, '$1u$2')
+      .replace(/-c2$/, '')
     const key = `${os}${arch}${version}`
     if (!mm.has(key)) {
       // zip/tar.gz - first one wins

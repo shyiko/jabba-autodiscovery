@@ -12,11 +12,7 @@ module.exports = async (m = _ => _) => {
       .then((data) => ({ns: 'graalvm-ee', require: ['otn-account'], data})),
     node('github-com-shyiko-jabba-index-zulu.js')
       .then((data) => ({ns: 'zulu', data})),
-    node('azul-com.js https://www.azul.com/downloads/zulu/zulu-linux/')
-      .then((data) => ({ns: 'zulu', data})),
-    node('azul-com.js https://www.azul.com/downloads/zulu/zulu-windows/')
-      .then((data) => ({ns: 'zulu', data})),
-    node('azul-com.js https://www.azul.com/downloads/zulu/zulu-mac/')
+    node('azul-com.js https://www.azul.com/downloads/zulu/')
       .then((data) => ({ns: 'zulu', data})),
     node('zulu-org.js https://zulu.org/download/?show=all')
       .then((data) => ({ns: 'zulu', data})),
@@ -52,10 +48,10 @@ module.exports = async (m = _ => _) => {
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk11/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
-/*	  
+/*
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk12/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
-*/      
+*/
     node('public-dhe-ibm-com.js')
       .then((data) => ({ns: 'ibm-sdk', data})),
     // todo: Alpine Linux	variant
