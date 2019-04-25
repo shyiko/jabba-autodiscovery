@@ -43,6 +43,7 @@ module.exports = async (m = _ => _) => {
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk9'),
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk10'),
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk11'),
+    node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk12'),
     // todo: Project Amber (https://adoptopenjdk.net/nightly.html?variant=amber)
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk8/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
@@ -70,11 +71,16 @@ module.exports = async (m = _ => _) => {
   })
   // oracle.com is scraped sequentially, otherwise we may get 403
   for (const sync of [
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html'),
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html'),
-    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html'),
-    // oracle-server-jre
-    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html'),
-    // archive (requires OTN account)
+
+    // archive (require OTN account)
+
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html')
+      .then((data) => ({require: ['otn-account'], data})),
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html')
+      .then((data) => ({require: ['otn-account'], data})),
+
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
       .then((data) => ({require: ['otn-account'], data})),
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html')
