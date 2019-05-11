@@ -17,11 +17,21 @@ const fetch = require('node-fetch')
     }
     for (const asset of release.assets || []) {
       const url = asset.browser_download_url
+      if (url.endsWith('.jar')) {
+        console.error(`skip(ext): ${url}`)
+        continue
+      }
       if (url.includes('linux-amd64')) {
         acc.push({os: "linux", arch: "amd64", version: m[1], url})
       } else
+      if (url.includes('darwin-amd64')) {
+        acc.push({os: "darwin", arch: "amd64", version: m[1], url})
+      } else
       if (url.includes('macos-amd64')) {
         acc.push({os: "darwin", arch: "amd64", version: m[1], url})
+      } else
+      if (url.includes('windows-amd64')) {
+        acc.push({os: "windows", arch: "amd64", version: m[1], url})
       } else {
         console.error(`skip(url): ${url}`)
       }
