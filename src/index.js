@@ -18,27 +18,12 @@ module.exports = async (m = _ => _) => {
       .then((data) => ({ns: 'zulu', data})),
     node('azul-com.js https://www.azul.com/downloads/zulu-embedded/')
       .then((data) => ({ns: 'zulu-embedded', data})),
-    // api.adoptopenjdk.net is constantly down
-/*
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-binaries/master/releases.json')
-      .then((data) => ({ns: 'adoptopenjdk', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-binaries/master/releases.json openj9')
-    .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk8-openj9-releases/master/releases.json openj9')
-      .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk9-binaries/master/releases.json')
-      .then((data) => ({ns: 'adoptopenjdk', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk9-openj9-releases/master/releases.json openj9')
-      .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk10-releases/master/releases.json')
-      .then((data) => ({ns: 'adoptopenjdk', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk10-openj9-releases/master/releases.json openj9')
-      .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk11-binaries/master/releases.json')
-      .then((data) => ({ns: 'adoptopenjdk', data})),
-    node('github-com-adoptopenjdk.js https://raw.githubusercontent.com/AdoptOpenJDK/openjdk11-binaries/master/releases.json openj9')
-      .then((data) => ({ns: 'adoptopenjdk-openj9', data})),
-*/
+    node('corretto-aws-amazon-com.js https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html')
+      .then((data) => ({ns: 'amazon-corretto', data})),
+    node('corretto-aws-amazon-com.js https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html')
+      .then((data) => ({ns: 'amazon-corretto', data})),
+    node('github-com-bell-sw-liberica.js')
+      .then((data) => ({ns: 'liberica', data})),
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk8'),
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk9'),
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk10'),
@@ -49,10 +34,6 @@ module.exports = async (m = _ => _) => {
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk11/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
-/*
-    node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk12/')
-      .then((data) => ({ns: 'openjdk-shenandoah', data})),
-*/
     node('public-dhe-ibm-com.js')
       .then((data) => ({ns: 'ibm-sdk', data})),
     // todo: Alpine Linux	variant
@@ -64,6 +45,13 @@ module.exports = async (m = _ => _) => {
     node('jdk-java-net.js https://jdk.java.net/valhalla/'),
     // node('jdk-java-net.js https://jdk.java.net/zgc/'), // incorporated in JDK 11-ea+18
     node('jdk-java-net.js https://jdk.java.net/archive/'),
+    // openjdk-ri (reference implementation)
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/12'),
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/11'),
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/10'),
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/9'),
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/8'),
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/7'),
     node('support-apple-com.js')
   ]).catch((err) => {
     console.error(err)

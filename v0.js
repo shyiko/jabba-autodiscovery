@@ -10,8 +10,11 @@ const v0nsbyv1 = {
   'ibm-sdk': 'jdk@ibm',
   'openjdk': 'jdk@openjdk',
   'openjdk-shenandoah': 'jdk@openjdk-shenandoah',
+  'openjdk-ri': 'jdk@openjdk-ri',
   'zulu-embedded': 'jdk@zulu',
   'zulu': 'jdk@zulu',
+  'amazon-corretto': 'jdk@amazon-corretto',
+  'liberica': 'jdk@liberica',
 }
 
 module.exports = (nn) => {
@@ -45,13 +48,38 @@ module.exports = (nn) => {
       }
       let version = e.version
       let m = version.match(/^(\d+)u(\d+)(?:-b(\d+))?$/)
-      if (m != null && (ns === 'jdk@zulu' || ns === 'jdk@sjre' || ns === 'jdk')) { // 8u171-b11
+      // 8u171-b11
+      if (m != null && (
+        ns === 'jdk@zulu' ||
+        ns === 'jdk@sjre' ||
+        ns === 'jdk' ||
+        ns === 'jdk@adopt' ||
+        ns === 'jdk@adopt-openj9' ||
+        ns === 'jdk@openjdk-ri' ||
+        ns === 'jdk@liberica'
+      )) {
         version = `1.${m[1]}.${m[2]}`
       } else
-      if (m != null && (ns === 'jdk@adopt' || ns === 'jdk@adopt-openj9')) { // 8u171-b11 or 9.0.4+12
-        m = m || version.match(/^(\d+)(?:.(\d+))?(?:.(\d+))?(?:\+(.+))?$/)
+      // 9.0.4+12
+      if (
+        ns === 'jdk@adopt' ||
+        ns === 'jdk@adopt-openj9' ||
+        ns === 'jdk@openjdk-ri' ||
+        ns === 'jdk@liberica'
+      ) {
+        m = version.match(/^(\d+)(?:.(\d+))?(?:.(\d+))?(?:\+(.+))?$/)
         version = `1.${m[1]}.${m[2]}${m[3] ? `-${m[3]}` : ''}`
       } else
+      if (ns === 'jdk@amazon-corretto') { // 8.212.04.2 or 11.0.3.7.1
+        m = version.match(/^(\d+).(\d+).(\d+).(\d+)$/)
+        if (m != null) {
+          version = `1.${m[1]}.${m[2]}-${m[3]}.${m[4]}`
+        } else {
+          m = version.match(/^(\d+).(\d+).(\d+).(\d+).(\d+)$/)
+          version = `1.${m[1]}.${m[2]}-${m[3]}.${m[4]}.${m[5]}`
+        }
+      } else
+        // openjdk-ri: 11+28 or 8u40-b25
       if (ns === 'jdk@ibm') { // 1.2.3.4
         m = version.match(/^(\d+).(\d+).(\d+).(\d+)$/)
         version = `1.${m[1]}.${m[2]}-${m[3]}.${m[4]}`
@@ -95,16 +123,30 @@ module.exports = (nn) => {
     for (const arch of Object.keys(index[os])) {
       for (const provider of Object.keys(index[os][arch])) {
         let ranges = []
-        if (provider === 'jdk' || provider === 'jdk@sjre' || provider === 'jdk@openjdk') {
-          // jdk/jdk@openjdk 1.10.0-1 -> 1.10.0
-          ranges = [{k: '1.13', v: '1.13.0'}, {k: '1.12', v: '1.12.0'}, {k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}]
-        } else
-        if (provider === 'jdk@zulu') {
-          ranges = [{k: '1.11', v: '1.11.0'}, {k: '1.10', v: '1.10.0'}, {k: '1.9', v: '1.9.0'}]
+        if (
+          provider === 'jdk' ||
+          provider === 'jdk@sjre' ||
+          provider === 'jdk@openjdk' ||
+          provider === 'jdk@openjdk-ri' ||
+          provider === 'jdk@zulu' ||
+          provider === 'jdk@liberica'
+        ) {
+          // 1.10.0-1 -> 1.10.0
+          ranges = [
+            { k: '1.13', v: '1.13.0' },
+            { k: '1.12', v: '1.12.0' },
+            { k: '1.11', v: '1.11.0' },
+            { k: '1.10', v: '1.10.0' },
+            { k: '1.9', v: '1.9.0' }
+          ]
         } else
         if (provider === 'jdk@ibm') {
           // jdk@ibm 1.8.0-5.16 -> 1.8.0 (same for 1.7/1.6)
-          ranges = [{k: '1.8', v: '1.8.0'}, {k: '1.7.0', v: '1.7.0'}, {k: '1.7.1', v: '1.7.1'}, {k: '1.6', v: '1.6.0'}]
+          ranges = [
+            { k: '1.8', v: '1.8.0' },
+            { k: '1.7.0', v: '1.7.0' },
+            { k: '1.7.1', v: '1.7.1' },
+            { k: '1.6', v: '1.6.0' }]
         }
         if (ranges.length) {
           const block = index[os][arch][provider]
