@@ -53,8 +53,8 @@ module.exports = (nn) => {
         ns === 'jdk@zulu' ||
         ns === 'jdk@sjre' ||
         ns === 'jdk' ||
-        ns === 'jdk@adopt' ||
-        ns === 'jdk@adopt-openj9' ||
+        // ns === 'jdk@adopt' ||
+        // ns === 'jdk@adopt-openj9' ||
         ns === 'jdk@openjdk-ri' ||
         ns === 'jdk@liberica'
       )) {
@@ -67,7 +67,7 @@ module.exports = (nn) => {
         ns === 'jdk@openjdk-ri' ||
         ns === 'jdk@liberica'
       ) {
-        m = version.match(/^(\d+)(?:.(\d+))?(?:.(\d+))?(?:\+(.+))?$/)
+        m = m || version.match(/^(\d+)(?:.(\d+))?(?:.(\d+))?(?:\+(.+))?$/)
         version = `1.${m[1]}.${m[2]}${m[3] ? `-${m[3]}` : ''}`
       } else
       if (ns === 'jdk@amazon-corretto') { // 8.212.04.2 or 11.0.3.7.1
