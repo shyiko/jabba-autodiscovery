@@ -60,23 +60,27 @@ module.exports = async (m = _ => _) => {
   // oracle.com is scraped sequentially, otherwise we may get 403
   for (const sync of [
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html'),
-    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html'),
 
     // archive (require OTN account)
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html')
+      .then((data) => ({require: ['otn-account'], data})),
+
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
+      .then((data) => ({require: ['otn-account'], data})),
+
+    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html')
+      .then((data) => ({require: ['otn-account'], data})),
 
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html')
       .then((data) => ({require: ['otn-account'], data})),
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html')
       .then((data) => ({require: ['otn-account'], data})),
-
-    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
-      .then((data) => ({require: ['otn-account'], data})),
-    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html')
-      .then((data) => ({require: ['otn-account'], data})),
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html')
-      .then((data) => ({require: ['otn-account'], data})),
+      .then((data) => ({ require: ['otn-account'], data })),
+
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html')
-      .then((data) => ({require: ['otn-account'], data})),
+      .then((data) => ({ require: ['otn-account'], data })),
+
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html')
       .then((data) => ({require: ['otn-account'], data}))
   ]) {
