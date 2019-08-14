@@ -89,7 +89,7 @@ module.exports = (nn) => {
         version = `1.${m[1]}.0`
       } else
       if (ns === 'jdk@graalvm') { // 1.0.0-rc1
-        version = version.replace('-rc', '-')
+        version = version.replace('-rc', '-').replace(/-dev-b0?/, '-')
       } else {
         let m = version.match(/^(\d+)(?:.(\d+))?(?:.(\d+))?(?:-([^\+]+))?(?:\+(.+))?$/) // 10.0.1+10 or 11-ea+15
         if (m == null) {
