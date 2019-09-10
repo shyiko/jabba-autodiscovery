@@ -101,7 +101,7 @@ module.exports = (nn) => {
           return // not supported by jabba@<1.0.0
         }
         if (pre === 'ea') {
-          version = `1.${m[1]}.0${m[5] ? `-${m[5]}` : ''}`
+          version = `1.${m[1]}.0-${m[5] || 0}`
         } else {
           version = `1.${m[1]}.0${m[3] ? `-${m[3]}` : ''}`
         }
@@ -154,8 +154,10 @@ module.exports = (nn) => {
           for (const range of ranges) {
             const s = kk.filter((k) => k.startsWith(range.k)).sort(naturalSort)
             if (s.length) {
-              block[range.v] = block[s[s.length - 1]]
-              // console.log(range, s, block[range.v])
+              const url = block[s[s.length - 1]]
+              if (!url.includes('-ea-') && !url.includes('-ea+')) {
+                block[range.v] = url
+              }
             }
           }
         }

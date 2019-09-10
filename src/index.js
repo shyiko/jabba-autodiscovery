@@ -12,12 +12,7 @@ module.exports = async (m = _ => _) => {
       .then((data) => ({ns: 'graalvm-ee', require: ['otn-account'], data})),
     node('github-com-shyiko-jabba-index-zulu.js')
       .then((data) => ({ns: 'zulu', data})),
-    node('azul-com.js https://www.azul.com/downloads/zulu/')
-      .then((data) => ({ns: 'zulu', data})),
-    node('zulu-org.js https://zulu.org/download/?show=all')
-      .then((data) => ({ns: 'zulu', data})),
-    node('azul-com.js https://www.azul.com/downloads/zulu-embedded/')
-      .then((data) => ({ns: 'zulu-embedded', data})),
+    node('azul-com.js'),
     node('corretto-aws-amazon-com.js https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.html')
       .then((data) => ({ns: 'amazon-corretto', data})),
     node('corretto-aws-amazon-com.js https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html')
@@ -42,7 +37,8 @@ module.exports = async (m = _ => _) => {
     node('jdk-java-net.js https://jdk.java.net/11/'),
     node('jdk-java-net.js https://jdk.java.net/12/'),
     node('jdk-java-net.js https://jdk.java.net/13/'),
-    node('jdk-java-net.js https://jdk.java.net/valhalla/'),
+    node('jdk-java-net.js https://jdk.java.net/14/'),
+    // node('jdk-java-net.js https://jdk.java.net/valhalla/'),
     // node('jdk-java-net.js https://jdk.java.net/zgc/'), // incorporated in JDK 11-ea+18
     node('jdk-java-net.js https://jdk.java.net/archive/'),
     // openjdk-ri (reference implementation)
@@ -65,7 +61,7 @@ module.exports = async (m = _ => _) => {
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html')
       .then((data) => ({require: ['otn-account'], data})),
 
-    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
+    () => node('oracle-com-java.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
       .then((data) => ({require: ['otn-account'], data})),
 
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html')
@@ -81,7 +77,7 @@ module.exports = async (m = _ => _) => {
     () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html')
       .then((data) => ({ require: ['otn-account'], data })),
 
-    () => node('oracle-com-javase.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html')
+    () => node('oracle-com-java.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html')
       .then((data) => ({require: ['otn-account'], data}))
   ]) {
     nn.push(await sync())

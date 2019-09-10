@@ -19,7 +19,7 @@ const fetch2xx = _ => _.ok ? _ : _.buffer().then(_ => { throw new Error(`${_.sta
           .replace(/^([678])[.]0[.]/, '$1u')
           .replace(/^1.([678])[.]0_(\d+).*/, '$1u$2')
           .replace(/^1.([678])[.]0-.*/, '$1')
-        ee.push({os, arch, version, url})
+        ee.push({os, arch, version, url: url.replace('http://', 'https://')})
       }
     }
   }
