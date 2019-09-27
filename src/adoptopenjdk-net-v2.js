@@ -17,8 +17,8 @@ const platformMap = {
     .sort((l, r) => r.timestamp.localeCompare(l.timestamp)) // latest wins
     .forEach((e) => {
     // jdk8u152-b01 or jdk-9+181
-    const version = e.release_name.replace(/^jdk-?/, '')
-      .replace(/_openj9-.*/, '')
+    const version = e.binaries[0].version_data.semver.replace('-', '+').replace(/-0+/, '-') ||
+        e.release_name.replace(/^jdk-?/, '').replace(/_openj9-.*/, '')
     e.binaries
       .sort((l, r) => r.updated_at.localeCompare(l.updated_at)) // latest wins
       .forEach((b) => {

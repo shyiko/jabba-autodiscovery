@@ -15,6 +15,9 @@ const fetch2xx = _ => _.ok ? _ : _.buffer().then(_ => { throw new Error(`${_.sta
           console.error(url)
           process.exit(1)
         }
+        if (url.includes('-ea-')) {
+          continue
+        }
         const version = versionMatch[1]
           .replace(/^([678])[.]0[.]/, '$1u')
           .replace(/^1.([678])[.]0_(\d+).*/, '$1u$2')

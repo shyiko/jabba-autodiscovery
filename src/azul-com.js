@@ -68,6 +68,7 @@ const domino = require('domino')
         .replace(/^([678])[.]0[.]/, '$1u')
         .replace(/^1.([678])[.]0_(\d+).*/, '$1u$2')
         .replace(/^1.([678])[.]0$/, '$1')
+        .replace(/-ca$/, '')
         .replace(/-c2$/, '') +
         (url.includes('-ea-') ? '-ea' : '')
       const key = `${os}${arch}${version}`

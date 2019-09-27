@@ -9,7 +9,8 @@ const fetch = require('node-fetch')
   }
   const res = await fetch('https://api.github.com/repos/oracle/graal/releases', {headers})
   const releases = await res.json()
-  const acc = []
+  const mm = new Map()
+  const ee = []
   for (const release of releases) {
     const m = release.tag_name.match(/^vm-(\d.+)$/)
     if (m == null) {
@@ -21,21 +22,25 @@ const fetch = require('node-fetch')
         console.error(`skip(ext): ${url}`)
         continue
       }
-      if (url.includes('linux-amd64')) {
-        acc.push({os: "linux", arch: "amd64", version: m[1], url})
-      } else
-      if (url.includes('darwin-amd64')) {
-        acc.push({os: "darwin", arch: "amd64", version: m[1], url})
-      } else
-      if (url.includes('macos-amd64')) {
-        acc.push({os: "darwin", arch: "amd64", version: m[1], url})
-      } else
-      if (url.includes('windows-amd64')) {
-        acc.push({os: "windows", arch: "amd64", version: m[1], url})
-      } else {
+      const os = (
+        url.includes('linux-amd64') ? 'linux' :
+        url.includes('darwin-amd64') || url.includes('macos-amd64') ? 'darwin' :
+        url.includes('windows-amd64') ? 'windows' : null
+      )
+      const arch = 'amd64'
+      const version = m[1].replace(/^(\d+[.]\d+[.]\d+)[.]\d+$/, '$1')
+      const key = `${os}${arch}${version}`
+      if (!os) {
         console.error(`skip(url): ${url}`)
+        continue
+      }
+      if (!mm.has(key)) {
+        mm.set(key, url)
+        ee.push({os, arch, version, url})
+      } else {
+        console.error(`skip(dup): ${url} (keeping ${mm.get(key)})`)
       }
     }
   }
-  console.log(JSON.stringify(acc, null, '  '))
+  console.log(JSON.stringify(ee, null, '  '))
 })()
