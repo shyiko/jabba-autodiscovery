@@ -8,6 +8,8 @@ module.exports = async (m = _ => _) => {
   const nn = await Promise.all([
     node('github-com-oracle-graal.js')
       .then((data) => ({ns: 'graalvm-ce', data})),
+    node('github-com-graalvm-graalvm-ce-builds.js')
+      .then((data) => ({ns: 'graalvm-ce', data})),
     node('oracle-com-labs.js')
       .then((data) => ({ns: 'graalvm-ee', require: ['otn-account'], data})),
     node('github-com-shyiko-jabba-index-zulu.js')
