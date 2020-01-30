@@ -15,9 +15,9 @@ module.exports = async (m = _ => _) => {
     node('github-com-shyiko-jabba-index-zulu.js')
       .then((data) => ({ns: 'zulu', data})),
     node('azul-com.js'),
-    node('corretto-aws-amazon-com.js https://docs.aws.amazon.com/corretto/latest/corretto-8-ug/downloads-list.partial.html')
+    node('github-com-corretto.js corretto/corretto-8')
       .then((data) => ({ns: 'amazon-corretto', data})),
-    node('corretto-aws-amazon-com.js https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.partial.html')
+    node('github-com-corretto.js corretto/corretto-11')
       .then((data) => ({ns: 'amazon-corretto', data})),
     node('github-com-bell-sw-liberica.js')
       .then((data) => ({ns: 'liberica', data})),
