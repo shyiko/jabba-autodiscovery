@@ -49,7 +49,7 @@ module.exports = async (m = _ => _) => {
     node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/11'),
     node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/10'),
     node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/9'),
-    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/8'),
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/8-MR3'),
     node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/7'),
     node('support-apple-com.js')
   ]).catch((err) => {
