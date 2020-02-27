@@ -36,9 +36,9 @@ module.exports = async (m = _ => _) => {
       .then((data) => ({ns: 'ibm-sdk', data})),
     // todo: Alpine Linux	variant
     // todo: JavaDocs
-    node('jdk-java-net.js https://jdk.java.net/10/'),
-    node('jdk-java-net.js https://jdk.java.net/11/'),
-    node('jdk-java-net.js https://jdk.java.net/12/'),
+    // node('jdk-java-net.js https://jdk.java.net/10/'),
+    // node('jdk-java-net.js https://jdk.java.net/11/'),
+    // node('jdk-java-net.js https://jdk.java.net/12/'),
     node('jdk-java-net.js https://jdk.java.net/13/'),
     node('jdk-java-net.js https://jdk.java.net/14/'),
     // node('jdk-java-net.js https://jdk.java.net/valhalla/'),
