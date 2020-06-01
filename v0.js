@@ -5,6 +5,8 @@ const v0nsbyv1 = {
   'oracle-jdk': 'jdk',
   'oracle-server-jre': 'jdk@sjre',
   'graalvm-ce': 'jdk@graalvm',
+  'graalvm-ce-java8': 'jdk@graalvm-ce-java8',
+  'graalvm-ce-java11': 'jdk@graalvm-ce-java11',
   'adoptopenjdk': 'jdk@adopt',
   'adoptopenjdk-openj9': 'jdk@adopt-openj9',
   'ibm-sdk': 'jdk@ibm',
@@ -88,7 +90,7 @@ module.exports = (nn) => {
         m = version.match(/^(\d+)$/)
         version = `1.${m[1]}.0`
       } else
-      if (ns === 'jdk@graalvm') { // 1.0.0-rc1
+      if (ns.startsWith('jdk@graalvm')) { // 1.0.0-rc1
         version = version.replace('-rc', '-').replace(/-dev-b0?/, '-')
       } else {
         let m = version.match(/^(\d+)(?:.(\d+))?(?:.(\d+))?(?:-([^\+]+))?(?:\+(.+))?$/) // 10.0.1+10 or 11-ea+15

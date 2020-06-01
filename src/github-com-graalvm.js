@@ -32,14 +32,17 @@ const fetch = require('node-fetch')
         )
         const arch = 'amd64'
         const version = m[1].replace(/^(\d+[.]\d+[.]\d+)[.]\d+$/, '$1')
-        const key = `${os}${arch}${version}`
+        const javaVersionMatch = url.match(/-java(\d+)-/)
+        const ns = javaVersionMatch != null ? `graalvm-ce-java${javaVersionMatch[1]}` : 'graalvm-ce-java8'
+        const key = `${ns}${os}${arch}${version}`
         if (!os) {
           console.error(`skip(url): ${url}`)
           continue
         }
         if (!mm.has(key)) {
           mm.set(key, url)
-          ee.push({ os, arch, version, url })
+          ee.push({ ns, os, arch, version, url })
+          ee.push({ ns: 'graalvm-ce', os, arch, version, url }) // backward-compat
         } else {
           console.error(`skip(dup): ${url} (keeping ${mm.get(key)})`)
         }

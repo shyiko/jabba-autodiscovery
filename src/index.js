@@ -6,10 +6,8 @@ process.on('unhandledRejection', (e) => { throw e }) // fail process
 
 module.exports = async (m = _ => _) => {
   const nn = await Promise.all([
-    node('github-com-graalvm.js oracle/graal')
-      .then((data) => ({ns: 'graalvm-ce', data})),
-    node('github-com-graalvm.js graalvm/graalvm-ce-builds')
-      .then((data) => ({ns: 'graalvm-ce', data})),
+    node('github-com-graalvm.js oracle/graal'),
+    node('github-com-graalvm.js graalvm/graalvm-ce-builds'),
     node('oracle-com-labs.js')
       .then((data) => ({ns: 'graalvm-ee', require: ['otn-account'], data})),
     node('github-com-shyiko-jabba-index-zulu.js')
