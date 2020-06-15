@@ -57,10 +57,19 @@ module.exports = async (m = _ => _) => {
   })
   // oracle.com is scraped sequentially, otherwise we may get 403
   for (const sync of [
-    () => node('oracle-com-java.js https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html'),
+    () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase-jdk14-downloads.html'),
 
     // archive (require OTN account)
-    // () => node('oracle-com-java.js https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html')
+    // () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html')
+    //   .then((data) => ({require: ['otn-account'], data})),
+
+    // () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase/jdk13-archive-downloads.html')
+    //   .then((data) => ({require: ['otn-account'], data})),
+
+    // () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase/jdk12-archive-downloads.html')
+    //   .then((data) => ({require: ['otn-account'], data})),
+
+    // () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html')
     //   .then((data) => ({require: ['otn-account'], data})),
 
     // () => node('oracle-com-java.js https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase10-4425482.html')
