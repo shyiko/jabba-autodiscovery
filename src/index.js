@@ -26,6 +26,7 @@ module.exports = async (m = _ => _) => {
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk12'),
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk13'),
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk14'),
+    // node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk15'),
     // todo: Project Amber (https://adoptopenjdk.net/nightly.html?variant=amber)
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk8/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
@@ -38,12 +39,16 @@ module.exports = async (m = _ => _) => {
     // node('jdk-java-net.js https://jdk.java.net/10/'),
     // node('jdk-java-net.js https://jdk.java.net/11/'),
     // node('jdk-java-net.js https://jdk.java.net/12/'),
-    node('jdk-java-net.js https://jdk.java.net/13/'),
+    // node('jdk-java-net.js https://jdk.java.net/13/'),
     node('jdk-java-net.js https://jdk.java.net/14/'),
+    node('jdk-java-net.js https://jdk.java.net/15/'),
     // node('jdk-java-net.js https://jdk.java.net/valhalla/'),
     // node('jdk-java-net.js https://jdk.java.net/zgc/'), // incorporated in JDK 11-ea+18
     node('jdk-java-net.js https://jdk.java.net/archive/'),
     // openjdk-ri (reference implementation)
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/15'),
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/14'),
+    node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/13'),
     node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/12'),
     node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/11'),
     node('jdk-java-net-ri.js https://jdk.java.net/java-se-ri/10'),
@@ -57,12 +62,15 @@ module.exports = async (m = _ => _) => {
   })
   // oracle.com is scraped sequentially, otherwise we may get 403
   for (const sync of [
-    () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase-jdk14-downloads.html'),
+    () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase-jdk15-downloads.html'),
 
     // archive (require OTN account)
-    // () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html')
+    // () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase/jdk15-archive-downloads.html')
     //   .then((data) => ({require: ['otn-account'], data})),
 
+    // () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html')
+    //   .then((data) => ({require: ['otn-account'], data})),
+    //
     // () => node('oracle-com-java.js https://www.oracle.com/java/technologies/javase/jdk13-archive-downloads.html')
     //   .then((data) => ({require: ['otn-account'], data})),
 
