@@ -39,7 +39,7 @@ const domino = require('domino')
         r[e.extension] = e
         return r
       }, {})
-      const url = (bundleMap['tar.gz'] || bundleMap['zip'] || bundleMap['dmg'] || {}).link
+      const url = (bundleMap['tar.gz'] || bundleMap['zip'] || bundleMap['dmg'] || bundleMap['msi'] || bundleMap['rpm'] || {}).link
       if (!url) {
         console.error(JSON.stringify(bundleMap))
         process.exit(1)
