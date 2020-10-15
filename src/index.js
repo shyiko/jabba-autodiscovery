@@ -26,7 +26,7 @@ module.exports = async (m = _ => _) => {
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk12'),
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk13'),
     node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk14'),
-    // node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk15'),
+    node('adoptopenjdk-net-v2.js https://api.adoptopenjdk.net/v2/info/releases/openjdk15'),
     // todo: Project Amber (https://adoptopenjdk.net/nightly.html?variant=amber)
     node('builds-shipilev-net.js https://builds.shipilev.net/openjdk-shenandoah-jdk8/')
       .then((data) => ({ns: 'openjdk-shenandoah', data})),
