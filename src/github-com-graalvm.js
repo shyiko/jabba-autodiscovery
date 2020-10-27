@@ -31,7 +31,7 @@ const fetch = require('node-fetch')
               url.includes('darwin-amd64') || url.includes('macos-amd64') ? 'darwin' :
                 url.includes('windows-amd64') ? 'windows' : null
         )
-        const arch = url.includes('linux-aarch64') ? 'aarch64' : 'amd64'
+        const arch = url.includes('aarch64') ? 'arm64' : 'amd64'
         const version = m[1].replace(/^(\d+[.]\d+[.]\d+)[.]\d+$/, '$1')
         const javaVersionMatch = url.match(/-java(\d+)-/)
         const ns = javaVersionMatch != null ? `graalvm-ce-java${javaVersionMatch[1]}` : 'graalvm-ce-java8'
