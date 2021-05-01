@@ -7,6 +7,7 @@ const v0nsbyv1 = {
   'graalvm-ce': 'jdk@graalvm',
   'graalvm-ce-java8': 'jdk@graalvm-ce-java8',
   'graalvm-ce-java11': 'jdk@graalvm-ce-java11',
+  'graalvm-ce-java16': 'jdk@graalvm-ce-java16',
   'adoptopenjdk': 'jdk@adopt',
   'adoptopenjdk-openj9': 'jdk@adopt-openj9',
   'ibm-sdk': 'jdk@ibm',
@@ -30,7 +31,7 @@ module.exports = (nn) => {
       const ns = v0nsbyv1[e.ns || n.ns]
       if (ns == null) {
         console.error(`Unable to resolve ns from ${e.ns || n.ns}`)
-        process.exit(1)
+        return
       }
       const os = index[e.os] || (index[e.os] = {})
       const arch = os[e.arch] || (os[e.arch] = {})
@@ -46,7 +47,7 @@ module.exports = (nn) => {
       )
       if (type == null) {
         console.error(`Unable to determine <type>+ of ${e.url}`)
-        process.exit(1)
+        return
       }
       let version = e.version
       let m = version.match(/^(\d+)u(\d+)(?:-b(\d+))?$/)
@@ -69,7 +70,11 @@ module.exports = (nn) => {
         ns === 'jdk@openjdk-ri' ||
         ns === 'jdk@liberica'
       ) {
-        m = m || version.match(/^(\d+)(?:.(\d+))?(?:.(\d+))?(?:\+(.+))?$/)
+        m = m || version.match(/^(\d+)(?:.(\d+))?(?:.(\d+(?:\.\d+)*))?(?:\+(.+))?$/)
+        if (m == null) {
+          console.error(`Unexpected version format (${ns}:${e.version})`)
+          return
+        }
         version = `1.${m[1]}.${m[2]}${m[3] ? `-${m[3]}` : ''}`
       } else
       if (ns === 'jdk@amazon-corretto') { // 8.212.04.2 or 11.0.3.7.1
@@ -78,25 +83,37 @@ module.exports = (nn) => {
           version = `1.${m[1]}.${m[2]}-${m[3]}.${m[4]}`
         } else {
           m = version.match(/^(\d+).(\d+).(\d+).(\d+).(\d+)$/)
+          if (m == null) {
+            console.error(`Unexpected version format (${ns}:${e.version})`)
+            return
+          }
           version = `1.${m[1]}.${m[2]}-${m[3]}.${m[4]}.${m[5]}`
         }
       } else
         // openjdk-ri: 11+28 or 8u40-b25
       if (ns === 'jdk@ibm') { // 1.2.3.4
         m = version.match(/^(\d+).(\d+).(\d+).(\d+)$/)
+        if (m == null) {
+          console.error(`Unexpected version format (${ns}:${e.version})`)
+          return
+        }
         version = `1.${m[1]}.${m[2]}-${m[3]}.${m[4]}`
       } else
       if (ns === 'jdk@openjdk-shenandoah') { // 10-b242
         m = version.match(/^(\d+)$/)
+        if (m == null) {
+          console.error(`Unexpected version format (${ns}:${e.version})`)
+          return
+        }
         version = `1.${m[1]}.0`
       } else
       if (ns.startsWith('jdk@graalvm')) { // 1.0.0-rc1
         version = version.replace('-rc', '-').replace(/-dev-b0?/, '-')
       } else {
-        let m = version.match(/^(\d+)(?:.(\d+))?(?:.(\d+))?(?:-([^\+]+))?(?:\+(.+))?$/) // 10.0.1+10 or 11-ea+15
+        let m = version.match(/^(\d+)(?:.(\d+))?(?:.(\d+(?:\.\d+)*))?(?:-([^\+]+))?(?:\+(.+))?$/) // 10.0.1.0+10 or 11-ea+15
         if (m == null) {
           console.error(`Unexpected version format (${ns}:${e.version})`)
-          process.exit(1)
+          return
         }
         const pre = m[4]
         if (pre === 'zgcea' || pre === 'valhallaea') {

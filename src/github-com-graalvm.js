@@ -21,7 +21,7 @@ const fetch = require('node-fetch')
       }
       for (const asset of release.assets || []) {
         const url = asset.browser_download_url
-        if (url.endsWith('.jar')) {
+        if (url.endsWith('.jar') || url.endsWith('.sha256')) {
           console.error(`skip(ext): ${url}`)
           continue
         }
