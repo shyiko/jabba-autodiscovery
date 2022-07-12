@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - "12"
 script:
-- if [[ $TRAVIS_REPO_SLUG == "shyiko/jabba-autodiscovery" && $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then ./sync.sh; fi
+- if [[ $TRAVIS_REPO_SLUG == "Jabba-Team/jabba-autodiscovery" && $TRAVIS_BRANCH == "main" && $TRAVIS_PULL_REQUEST == "false" ]]; then ./sync.sh; fi
 env:
   global:
     secure: qFuavkqT3+u1P5m8LbsPvkVR9r2v2yZd+MQRkTjV95Up36mPs9yTJ8zfh9w3b5pSMAPBrGjsYzXNVBIxbWQYDRxjXxeH3MQ0hprj2o8oTYHTrNKjYqRiz8uhPdiZq7BsxrEB6L/Rp8ExrPk3EbC/+ZMqnjGeP4QafrvOf3NWZ6VJTYPe9bP4bcjoX3VEB3wMgzqZ+6SBqtzJSW0ktkiPw65xD0bYufvSY2rev6+nS2KdDtbViYS/2B1AOas7qNhUTMZH71D7UR3BdI2nAsCiNDyHCCz7IR66+HotHHrh4Ucz4ytFHNqtTX7nwXGXRQsIIfmFNvMRNUbrgcmiKo3b0UY0EVWbMgd6wPDB7NXTww3mDPS5zzzYzgp0+8jGxByV9JsUGQCcR7X0/puloQ/F9+sm3k1EhwYRgkGoGGXCFT22on9pXKtAPzzj9TIxd0XqLbau5KxytZXA9IZosdmonBkM+eAM3CvIpZr4aZP5h5QQNpBg8NTNkblCmIs83DJra3J6z+3pDh/nK4mnEjrIMUP+ddLgB0noarMftWWNkIAj0anl9mvrea5Pbb67eeTMxkdd59qvTq1wZnUoBtl0wHBQiYsoi9VBC+bSXmRFTrF2yRis/BG7DbJDq3gbNaA9uQhoXapCD7o7oDiRdXSCxi8EclVOVLddUh4prWUZtUI=
